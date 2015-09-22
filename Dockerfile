@@ -5,7 +5,7 @@ RUN mkdir -p /app/user
 
 ENV GEM_PATH /app/heroku/ruby/bundle/ruby/2.1.7
 ENV GEM_HOME /app/heroku/ruby/bundle/ruby/2.1.7
-ENV BUNDLE_PATH=/app/heroku/ruby/bundle
+ENV BUNDLE_PATH=/bundle
 RUN mkdir -p /app/heroku/ruby/bundle/ruby/2.1.7
 
 # Install Ruby
