@@ -5,6 +5,7 @@ RUN mkdir -p /app/user
 
 ENV GEM_PATH /app/heroku/ruby/bundle/ruby/2.1.7
 ENV GEM_HOME /app/heroku/ruby/bundle/ruby/2.1.7
+ENV BUNDLE_PATH=/app/heroku/ruby/bundle
 RUN mkdir -p /app/heroku/ruby/bundle/ruby/2.1.7
 
 # Install Ruby
@@ -19,11 +20,5 @@ ENV PATH /app/heroku/ruby/node-0.12.7/bin:$PATH
 RUN gem install bundler -v 1.9.10 --no-ri --no-rdoc
 ENV PATH /app/bin:/app/heroku/ruby/bundle/ruby/2.1.7/bin:$PATH
 ENV BUNDLE_APP_CONFIG /app/heroku/ruby/.bundle/config
-
-# Hack to cache gems
-ONBUILD WORKDIR /tmp
-ONBUILD COPY Gemfile Gemfile
-ONBUILD COPY Gemfile.lock Gemfile.lock
-ONBUILD RUN bundle install
 
 WORKDIR /app/user
